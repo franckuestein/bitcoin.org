@@ -114,9 +114,13 @@ es:
     walletcatweb: "Web"
     walletbitcoinqt: "Bitcoin Core es un cliente completo de Bitcoin y representa la columna vertebral de la red. Este ofrece altos niveles de seguridad, privacidad y estabilidad. Sin embargo, tiene menos prestaciones y ocupa demasiado espacio y memoria."
     walletmultibit: "MultiBit es un programa ligero que se centra en ser rápido y fácil de usar. Se sincroniza con la red y está listo para usarse en minutos. MultiBit también esta disponible en varios idiomas. Es una buena opción para los usuarios que no son técnicos."
+<<<<<<< HEAD
     wallethive: "Hive es un monedero Bitcoin para Mac OS X rápido y fácil de usar. Con un enfoque en la usabilidad, Hive está traducido a varios idiomas y  además tiene apps, por lo que es fácil interactuar con sus servicios y comerciantes Bitcoin favoritos."
     wallethive-web: "Hive es una billetera amigable de Bitcoin y Litecoin, que cuenta con una interfaz bella, elegante y simple. Ofrece Waggle, una forma simple de enviar y recibir fichas con otros usuarios de Hive cercano a ti. Tu contraseña crea tu billetera, lo cual la hace portable y facilita los respaldos."
     walletarmory: "Armory es un cliente avanzado de Bitcoin que amplia sus características para usuarios avanzados. Ofrece muchas opciones para respaldar, cifrar y permitir el almacenamiento de su monedero en ordenadores sin conexión."
+=======
+    walletarmory: "Armory es un cliente avanzado de Bitcoin que amplia sus características para usuarios avanzados. Ofrece muchas opciones para respaldar, encriptar y permitir el almacenamiento de su monedero en ordenadores sin conexión."
+>>>>>>> bitcoin-dot-org/master
     walletelectrum: "Electrum se enfoca en la sencillez y velocidad, con poco uso de recursos. Utiliza servidores remotos que se encargan de las partes más complejas del sistema Bitcoin, y le permite recuperar su monedero por medio de una frase secreta."
     walletmsigna: "mSIGNA es un monedero avanzado pero fácil de usar que ofrece velocidad, simplicidad, escalabilidad a nivel empresarial y una fuerte seguridad. Soporta BIP32, transacciones multifirma, almacenamiento fuera de línea, sincronización de múltiples dispositivos, y copias de seguridad y en papel, cifrados."
     walletbitcoinwallet: "La Billetera de Bitcoin es fácil de usar, confiable, rápida y segura al mismo tiempo. Su visión es ser descentralizada y cero confianza; no es necesario algún servicio central para hacer operaciones relacionadas con Bitcoin. La aplicación es una buena elección para gente sin conocimientos técnicos."
@@ -150,7 +154,7 @@ es:
     checkfailcontrolthirdparty: "Dinero controlado por un tercero"
     checkfailcontrolthirdpartytxt: "Este servicio tiene control total sobre tus bitcoins. Esto significa que necesitas confiar en que el servicio no perderá tus fondos en un incidente suyo. Al día de hoy, la mayoría de las billeteras web no aseguran sus depósitos como un banco, y muchos servicios de este tipo han sufrido violaciones de seguridad en el pasado."
     checkgoodvalidationfullnode: "Validación completa"
-    checkgoodvalidationfullnodetxt: "Esta billetera es un nodo completo que valida y retransmite transacciones a la red de Bitcoin. Esto significa que no requieres confiar en un tercero al momento de verificar los pagos. Los nodos completos proveen el más alto nivel de seguridad y son esenciales para proteger la red. Sin embargo, requieren más espacio (más de 20GB), ancho de banda, y un mayor tiempo de sincronización inicial."
+    checkgoodvalidationfullnodetxt: "Esta billetera es un nodo completo que valida y retransmite transacciones a la red de Bitcoin. Esto significa que no requieres confiar en un tercero al momento de verificar los pagos. Los nodos completos proveen el más alto nivel de seguridad y son esenciales para proteger la red. Sin embargo, requieren más espacio (más de 65GB), ancho de banda, y un mayor tiempo de sincronización inicial."
     checkneutralvalidationvariable: "Validación variable"
     checkneutralvalidationvariabletxt: "Las funciones de validación de pagos son provistas por el monedero que uses con este dispositivo. Por favor ve el puntaje de validación para el monedero que planeas usar."
     checkpassvalidationspvp2p: "Validación simplificada"
@@ -235,7 +239,11 @@ es:
     sourcecode: "Obtener el código de origen"
     versionhistory: "Mostrar historial de versiones"
     notelicense: "Bitcoin Core es un proyecto <a href=\"https://www.fsf.org/about/what-is-free-software\">gratuito de código abierto</a> impulsado por la comunidad, liberado bajo la licencia <a href=\"http://opensource.org/licenses/mit-license.php\">MIT</a>."
+<<<<<<< HEAD
     notesync: "La sincronizazción inicial de Bitcoin Core puede tomar un largo tiempo. Debería asegurarse de que dispone de suficiente ancho de banda y espacio de almacenamiento para la descarga completa de lacadena de bloques (más de 20GB). Si sabe como descargar un archivo torrent, puede acelerar el proceso poniendo <a href=\"/bin/blockchain/bootstrap.dat.torrent\">bootstrap.dat</a> (una copia anterior de la cadena de bloques) en el directorio de datos de Bitcoin Core antes de iniciar el programa."
+=======
+    notesync: "La sincronizazción inicial de Bitcoin Core puede tomar un largo tiempo. Debería asegurarse de que dispone de suficiente ancho de banda y espacio de almacenamiento para la descarga completa de lacadena de bloques (más de 65GB). Si sabe como descargar un archivo torrent, puede acelerar el proceso poniendo  <a href=\"/bin/blockchain/bootstrap.dat.torrent\">bootstrap.dat</a> ( una copia anterior de la cadena de bloques) en el directorio de datos de Bitcoin Core antes de iniciar el programa."
+>>>>>>> bitcoin-dot-org/master
     patient: "Debe tener paciencia"
   events:
     title: "Conferencias y eventos - Bitcoin"
@@ -266,7 +274,7 @@ es:
     usedtxt1: "Sí. Existe un <a href=\"http://usebitcoins.info/\">número creciente de negocios</a> e individuos usando Bitcoin. Esto incluye negocios tradicionales como restaurantes, casas, bufetes de abogados y servicios de Internet populares como Namecheap, Wordpress, Reddit y Flattr. Aunque Bitcoin sigue siendo un fenómeno relativamente nuevo, esta creciendo rápido. A finales de Agosto de 2013, el <a href=\"https://bitcoincharts.com/bitcoin/\">valor de todos los bitcoins en circulación</a> superaba los 1.5 billones de dólares y cada día se intercambiaban el equivalente a millones de dólares en bitcoins."
     acquire: "¿Cómo se adquieren bitcoins?"
     acquireli1: "Como pago por bienes o servicios."
-    acquireli2: "Compre bitcoins en una <a href=\"http://howtobuybitcoins.info\">casa de cambio de Bitcoin</a>."
+    acquireli2: "Compre bitcoins en una <a href=\"https://www.buybitcoinworldwide.com\">casa de cambio de Bitcoin</a>."
     acquireli3: "Intercambie bitcoins con <a href=\"https://localbitcoins.com/\">alguien en su zona</a>."
     acquireli4: "Consiga bitcoins a través de la competitiva <a href=\"http://www.bitcoinmining.com/\">minería</a>."
     acquiretxt1: "Si bien es posible encontrar individuos que desean vender bitcoins a cambio de un pago por PayPal o tarjeta de crédito, la mayoría de las casas de cambio no permiten utilizar estos métodos de pago. Esto se debe a casos en los que alguien compra bitcoins con PayPal y luego revierte la mitad de la transacción. Esto es comúnmente referido como reembolso."
@@ -563,7 +571,7 @@ es:
     node: "Sea la red"
     nodetxt: "Si tienes una buena conexión a internet, puedes fortalecer la red red Bitcoin al mantener <a href=\"#download#\"> programas de nodo completo</a> corriento en tu computadora o servidor con el puerto 8333 abierto. Los nodos completos aseguran y retransmiten todas las transacciones."
     mining: "Minería"
-    miningtxt: "Puede comenzar <a href=\"http://www.bitcoinmining.com/\">minando bitcoins</a> para ayudar a procesar transacciones. Para proteger la red, debe unirse a <a href=\"http://mempool.info/pools\">comunidades pequeñas de minería</a> y optar por grupos descentralizados como <a href=\"http://p2pool.in/\">P2Pool</a> o <a href=\"https://en.bitcoin.it/wiki/Comparison_of_mining_pools\">comunidades</a> con soporte getblocktemplate (GBT)."
+    miningtxt: "Puede comenzar <a href=\"http://www.bitcoinmining.com/\">minando bitcoins</a> para ayudar a procesar transacciones. Para proteger la red, debe unirse a comunidades pequeñas de minería y optar por grupos descentralizados como <a href=\"http://p2pool.in/\">P2Pool</a> o <a href=\"https://en.bitcoin.it/wiki/Comparison_of_mining_pools\">comunidades</a> con soporte getblocktemplate (GBT)."
     develop: "Desarrollo"
     developtxt: "Bitcoin es de código abierto. Así que si usted es un desarrollador, usted puede usar sus súper poderes para hacer el bien y <a href=\"#development#\">mejorar Bitcoin</a>. O también puede crear nuevos servicios sorprendentes o programas que Bitcoin puede usar."
     donation: "Donando"

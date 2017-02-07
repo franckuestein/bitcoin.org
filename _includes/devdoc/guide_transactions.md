@@ -9,7 +9,7 @@ http://opensource.org/licenses/MIT.
 
 {% autocrossref %}
 
-<!-- reference tx (made by Satoshi in block 170): 
+<!-- reference tx (made by Satoshi in block 170):
     bitcoind decoderawtransaction $( bitcoind getrawtransaction f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16 )
 -->
 
@@ -118,7 +118,7 @@ in the previous output's pubkey script.  Signature scripts are also
 called scriptSigs.
 
 Pubkey scripts and signature scripts combine secp256k1 pubkeys
-and signatures with conditional logic, creating a programable
+and signatures with conditional logic, creating a programmable
 authorization mechanism.
 
 ![Unlocking A P2PKH Output For Spending](/img/dev/en-unlocking-p2pkh-output.svg)
@@ -338,7 +338,7 @@ or multiple Bitcoin addresses.
 
 ~~~
 Pubkey script: OP_DUP OP_HASH160 <PubKeyHash> OP_EQUALVERIFY OP_CHECKSIG
-Signature script: <sig> <pubkey> 
+Signature script: <sig> <pubkey>
 ~~~
 
 #### Pay To Script Hash (P2SH)
@@ -380,7 +380,7 @@ list of secp256k1 signatures in the signature script must be prefaced with an ex
 
 The signature script must provide signatures in the same order as the
 corresponding public keys appear in the pubkey script or redeem
-script. See the desciption in [`OP_CHECKMULTISIG`][op_checkmultisig]
+script. See the description in [`OP_CHECKMULTISIG`][op_checkmultisig]
 for details.
 
 {% endautocrossref %}
@@ -426,10 +426,22 @@ Signature script: <sig>
 
 {% autocrossref %}
 
-[Null data][/en/glossary/null-data-transaction]{:#term-null-data}{:.term} pubkey scripts let you add a small amount of arbitrary data to the block
-chain in exchange for paying a transaction fee, but doing so is discouraged.
-(Null data is a standard pubkey script type only because some people were adding data
-to the block chain in more harmful ways.)
+[Null data][/en/glossary/null-data-transaction]{:#term-null-data}{:.term}
+transaction type relayed and mined by default in Bitcoin Core 0.9.0 and
+later that adds arbitrary data to a provably unspendable pubkey script
+that full nodes don't have to store in their UTXO database. It is
+preferable to use null data transactions over transactions that bloat
+the UTXO database because they cannot be automatically pruned; however,
+it is usually even more preferable to store data outside transactions
+if possible.
+
+Consensus rules allow null data outputs up to the maximum allowed pubkey
+script size of 10,000 bytes provided they follow all other consensus
+rules, such as not having any data pushes larger than 520 bytes.
+
+Bitcoin Core 0.9.x to 0.10.x will, by default, relay and mine null data
+transactions with up to 40 bytes in a single data push and only one null
+data output that pays exactly 0 satoshis:
 
 {% endautocrossref %}
 
@@ -437,6 +449,19 @@ to the block chain in more harmful ways.)
 Pubkey Script: OP_RETURN <0 to 40 bytes of data>
 (Null data scripts cannot be spent, so there's no signature script.)
 ~~~
+
+Bitcoin Core 0.11.x increases this default to 80 bytes, with the other
+rules remaining the same.
+
+Bitcoin Core 0.12.0 defaults
+to relaying and mining null data outputs with up to 83 bytes with any
+number of data pushes, provided the total byte limit is not exceeded.
+There must still only be a single null data output and it must still pay
+exactly 0 satoshis.
+
+The `-datacarriersize` Bitcoin Core configuration option allows you to
+set the maximum number of bytes in null data outputs that you will relay
+or mine.
 
 #### Non-Standard Transactions
 {% include helpers/subhead-links.md %}
@@ -564,7 +589,7 @@ hash types sign, including the procedure for inserting the subscript -->
 One thing all signature hash types sign is the transaction's [locktime][/en/glossary/locktime]{:#term-locktime}{:.term}.
 (Called nLockTime in the Bitcoin Core source code.)
 The locktime indicates the earliest time a transaction can be added to
-the block chain.  
+the block chain.
 
 Locktime allows signers to create time-locked transactions which will
 only become valid in the future, giving the signers a chance to change
@@ -620,23 +645,17 @@ enable locktime.
 
 {% autocrossref %}
 
-Transactions typically pay transaction fees based on the total byte size
-of the signed transaction.  The transaction fee is given to the
+Transactions pay fees based on the total byte size of the signed transaction. Fees per byte are calculated based on current demand for space in mined blocks with fees rising as demand increases.  The transaction fee is given to the
 Bitcoin miner, as explained in the [block chain section][section block chain], and so it is
 ultimately up to each miner to choose the minimum transaction fee they
 will accept.
 
-<!-- TODO: check: 50 KB or 50 KiB?  Not that transactors care... -->
+There is also a concept of so-called "[high-priority transactions][/en/glossary/high-priority-transaction]{:#term-high-priority-transactions}{:.term}" which spend satoshis that have not moved for a long time.
 
-By default, miners reserve 50 KB of each block for [high-priority
-transactions][/en/glossary/high-priority-transaction]{:#term-high-priority-transactions}{:.term} which spend satoshis that haven't been spent for a long
-time.  The remaining space in each block is typically allocated to transactions
-based on their fee per byte, with higher-paying transactions being added
-in sequence until all of the available space is filled.
+In the past, these "priority" transaction were often exempt from the normal fee requirements. Before Bitcoin Core 0.12, 50 KB of each block would be reserved for these high-priority transactions, however this is now set to 0 KB by default.  After the priority area, all transactions are prioritized based on their fee per byte, with higher-paying transactions being added in sequence until all of the available space is filled. <!-- Consider adding links to blockmaxsize and blockmaxweight options once available in the glossary. -->
 
-As of Bitcoin Core 0.9, transactions which do not count as high-priority transactions
-need to pay a [minimum fee][/en/glossary/minimum-relay-fee]{:#term-minimum-fee}{:.term} (currently 1,000 satoshis) to be
-broadcast across the network. Any transaction paying only the minimum fee
+As of Bitcoin Core 0.9, a [minimum fee][/en/glossary/minimum-relay-fee]{:#term-minimum-fee}{:.term} (currently 1,000 satoshis) has been required to
+broadcast a transaction across the network. Any transaction paying only the minimum fee
 should be prepared to wait a long time before there's enough spare space
 in a block to include it. Please see the [verifying payment section][section verifying payment]
 for why this could be important.
@@ -696,7 +715,7 @@ described below, with more general attacks hypothesized).
 2. Unique (non-reused) private keys protect against the second type of
    attack by only generating one signature per private key, so attackers
    never get a subsequent signature to use in comparison-based attacks.
-   Existing comparison-based attacks are only practical today when 
+   Existing comparison-based attacks are only practical today when
    insufficient entropy is used in signing or when the entropy used
    is exposed by some means, such as a
    [side-channel attack](https://en.wikipedia.org/wiki/Side_channel_attack).
@@ -761,4 +780,3 @@ always work is to ensure the reissued payment spends all of the same
 outputs that the lost transaction used as inputs.
 
 {% endautocrossref %}
-

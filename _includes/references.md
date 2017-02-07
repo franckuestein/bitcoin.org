@@ -66,13 +66,16 @@ http://opensource.org/licenses/MIT.
 [wallet support]: /en/developer-reference#term-wallet-support "A Bitcoin Core ./configure option that enables (default) or disables the wallet"
 
 {% comment %}<!-- RPCs; alphabetical order -->{% endcomment %}
+[rpc abandontransaction]: /en/developer-reference#abandontransaction
 [rpc addmultisigaddress]: /en/developer-reference#addmultisigaddress
 [rpc addnode]: /en/developer-reference#addnode
 [rpc backupwallet]: /en/developer-reference#backupwallet
+[rpc clearbanned]: /en/developer-reference#clearbanned
 [rpc createmultisig]: /en/developer-reference#createmultisig
 [rpc createrawtransaction]: /en/developer-reference#createrawtransaction
 [rpc decoderawtransaction]: /en/developer-reference#decoderawtransaction
 [rpc decodescript]: /en/developer-reference#decodescript
+[rpc disconnectnode]: /en/developer-reference#disconnectnode
 [rpc dumpprivkey]: /en/developer-reference#dumpprivkey
 [rpc dumpwallet]: /en/developer-reference#dumpwallet
 [rpc encryptwallet]: /en/developer-reference#encryptwallet
@@ -89,6 +92,7 @@ http://opensource.org/licenses/MIT.
 [rpc getblockchaininfo]: /en/developer-reference#getblockchaininfo
 [rpc getblockcount]: /en/developer-reference#getblockcount
 [rpc getblockhash]: /en/developer-reference#getblockhash
+[rpc getblockheader]: /en/developer-reference#getblockheader
 [rpc getblocktemplate]: /en/developer-reference#getblocktemplate
 [rpc getchaintips]: /en/developer-reference#getchaintips
 [rpc getconnectioncount]: /en/developer-reference#getconnectioncount
@@ -122,6 +126,7 @@ http://opensource.org/licenses/MIT.
 [rpc keypoolrefill]: /en/developer-reference#keypoolrefill
 [rpc listaccounts]: /en/developer-reference#listaccounts
 [rpc listaddressgroupings]: /en/developer-reference#listaddressgroupings
+[rpc listbanned]: /en/developer-reference#listbanned
 [rpc listlockunspent]: /en/developer-reference#listlockunspent
 [rpc listreceivedbyaccount]: /en/developer-reference#listreceivedbyaccount
 [rpc listreceivedbyaddress]: /en/developer-reference#listreceivedbyaddress
@@ -137,6 +142,7 @@ http://opensource.org/licenses/MIT.
 [rpc sendrawtransaction]: /en/developer-reference#sendrawtransaction
 [rpc sendtoaddress]: /en/developer-reference#sendtoaddress
 [rpc setaccount]: /en/developer-reference#setaccount
+[rpc setban]: /en/developer-reference#setban
 [rpc setgenerate]: /en/developer-reference#setgenerate
 [rpc settxfee]: /en/developer-reference#settxfee
 [rpc signmessage]: /en/developer-reference#signmessage
@@ -216,8 +222,18 @@ http://opensource.org/licenses/MIT.
 [Bitcoin Core 0.9.1]: /en/release/v0.9.1
 [Bitcoin Core 0.9.2]: /en/release/v0.9.2
 [Bitcoin Core 0.9.3]: /en/release/v0.9.3
-{% comment %}<!-- TODOv0.10 update this to point to 0.10 release notes when released -->{% endcomment %}
-[Bitcoin Core 0.10.0]: https://github.com/bitcoin/bitcoin/tree/0.10
+[Bitcoin Core 0.10.0]: /en/release/v0.10.0
+[Bitcoin Core 0.10.1]: /en/release/v0.10.1
+[Bitcoin Core 0.10.2]: /en/release/v0.10.2
+[Bitcoin Core 0.10.3]: /en/release/v0.10.3
+[Bitcoin Core 0.11.0]: /en/release/v0.11.0
+[Bitcoin Core 0.11.1]: /en/release/v0.11.1
+[Bitcoin Core 0.11.2]: /en/release/v0.11.2
+[Bitcoin Core 0.12.0]: /en/release/v0.12.0
+[Bitcoin Core 0.12.1]: /en/release/v0.12.1
+[Bitcoin Core 0.13.0]: /en/release/v0.13.0
+[Bitcoin Core 0.13.1]: /en/release/v0.13.1
+[Bitcoin Core 0.13.2]: /en/release/v0.13.2
 [bitcoin URI subsection]: /en/developer-guide#bitcoin-uri
 [bitcoind initial setup]: /en/developer-examples
 [bitcoinpdf]: https://bitcoin.org/en/bitcoin-paper
@@ -269,6 +285,7 @@ http://opensource.org/licenses/MIT.
 
 {% comment %}<!-- Official reference documents (BIPs should not use zero padding:
      BIP32 not BIP0032); alphabetical order -->{% endcomment %}
+[BIP9]: https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki
 [BIP14]: https://github.com/bitcoin/bips/blob/master/bip-0014.mediawiki
 [BIP16]: https://github.com/bitcoin/bips/blob/master/bip-0016.mediawiki
 [BIP21]: https://github.com/bitcoin/bips/blob/master/bip-0021.mediawiki
@@ -288,7 +305,14 @@ http://opensource.org/licenses/MIT.
 [BIP70]: https://github.com/bitcoin/bips/blob/master/bip-0070.mediawiki
 [BIP71]: https://github.com/bitcoin/bips/blob/master/bip-0071.mediawiki
 [BIP72]: https://github.com/bitcoin/bips/blob/master/bip-0072.mediawiki
+[BIP111]: https://github.com/bitcoin/bips/blob/master/bip-0111.mediawiki
+[BIP112]: https://github.com/bitcoin/bips/blob/master/bip-0112.mediawiki
+[BIP113]: https://github.com/bitcoin/bips/blob/master/bip-0113.mediawiki
 [BIP130]: https://github.com/bitcoin/bips/blob/master/bip-0130.mediawiki
+[BIP133]: https://github.com/bitcoin/bips/blob/master/bip-0133.mediawiki
+[BIP141]: https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki
+[BIP151]: https://github.com/bitcoin/bips/blob/master/bip-0151.mediawiki
+[BIP152]: https://github.com/bitcoin/bips/blob/master/bip-0152.mediawiki
 [CVE-2012-2459]: https://en.bitcoin.it/wiki/CVEs#CVE-2012-2459
 [RFC5737]: http://tools.ietf.org/html/rfc5737
 [secp256k1]: http://www.secg.org/sec2-v2.pdf
@@ -307,6 +331,7 @@ http://opensource.org/licenses/MIT.
 [bcc pulls]: https://github.com/bitcoin/bitcoin/pulls
 [bcc tor]: https://en.bitcoin.it/wiki/Tor
 [bcc tor hs]: https://en.bitcoin.it/wiki/Tor#Hidden_services
+[core github tag]: https://github.com/bitcoin-dot-org/bitcoin.org/labels/Core
 [BFGMiner]: https://github.com/luke-jr/bfgminer
 [Bitcoin beginners]: http://www.reddit.com/r/bitcoinbeginners
 [Bitcoin Core]: https://bitcoin.org/en/download
@@ -388,6 +413,7 @@ http://opensource.org/licenses/MIT.
 [protobuf]: https://developers.google.com/protocol-buffers/
 [python-bitcoinlib]: https://github.com/petertodd/python-bitcoinlib
 [python-blkmaker]: https://gitorious.org/bitcoin/python-blkmaker
+[Satoshi Nakamoto]: https://en.bitcoin.it/wiki/Satoshi_Nakamoto
 [setup tor]: https://www.torproject.org/
 [SHA256]: https://en.wikipedia.org/wiki/SHA-2
 [Stratum mining protocol]: http://mining.bitcoin.cz/stratum-mining

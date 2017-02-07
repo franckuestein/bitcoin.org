@@ -1,6 +1,9 @@
 ---
 # This file is licensed under the MIT License (MIT) available on
 # http://opensource.org/licenses/MIT.
+#
+# Definitions for the property checks below can be found here:
+# https://github.com/bitcoin-dot-org/bitcoin.org/blob/master/_translations/en.yml
 
 layout: base
 id: choose-your-wallet
@@ -17,6 +20,31 @@ wallets:
         link: "bitcoincore"
         source: "https://github.com/bitcoin/bitcoin"
         screenshot: "bitcoincore.png"
+        os:
+        - windows
+        - mac
+        - linux
+        check:
+          control: "checkgoodcontrolfull"
+          validation: "checkgoodvalidationfullnode"
+          transparency: "checkgoodtransparencydeterministic"
+          environment: "checkfailenvironmentdesktop"
+          privacy: "checkgoodprivacyimproved"
+        privacycheck:
+          privacyaddressreuse: "checkpassprivacyaddressrotation"
+          privacydisclosure: "checkpassprivacydisclosurefullnode"
+          privacynetwork: "checkpassprivacynetworksupporttorproxy"
+- bitcoinknots:
+    title: "Bitcoin Knots"
+    titleshort: "Bitcoin<br>Knots"
+    compat: "desktop windows mac linux"
+    level: 1
+    platform:
+      desktop:
+        text: "walletbitcoinknots"
+        link: "http://bitcoinknots.org/"
+        source: "https://github.com/bitcoinknots/bitcoin/"
+        screenshot: "bitcoinknots.png"
         os:
         - windows
         - mac
@@ -64,8 +92,8 @@ wallets:
     platform:
       desktop:
         text: "walletarmory"
-        link: "https://bitcoinarmory.com"
-        source: "https://github.com/etotheipi/BitcoinArmory"
+        link: "https://btcarmory.com/"
+        source: "https://github.com/goatpig/BitcoinArmory"
         screenshot: "armory.png"
         os:
         - windows
@@ -100,12 +128,29 @@ wallets:
           control: "checkgoodcontrolfull"
           validation: "checkpassvalidationspvservers"
           transparency: "checkpasstransparencyopensource"
-          environment: "checkfailenvironmentdesktop"
+          environment: "checkpassenvironmenttwofactor"
           privacy: "checkpassprivacybasic"
         privacycheck:
           privacyaddressreuse: "checkpassprivacyaddressrotation"
           privacydisclosure: "checkfailprivacydisclosurecentralized"
           privacynetwork: "checkpassprivacynetworksupporttorproxy"
+      android:
+        text: "walletelectrum"
+        link: "https://play.google.com/store/apps/details?id=org.electrum.electrum"
+        source: "https://github.com/spesmilo/electrum"
+        screenshot: "electrumandroid.png"
+        os:
+        - android
+        check:
+          control: "checkgoodcontrolfull"
+          validation: "checkpassvalidationspvservers"
+          transparency: "checkpasstransparencyopensource"
+          environment: "checkpassenvironmentmobile"
+          privacy: "checkpassprivacybasic"
+        privacycheck:
+          privacyaddressreuse: "checkpassprivacyaddressrotation"
+          privacydisclosure: "checkfailprivacydisclosureaccount"
+          privacynetwork: "checkfailprivacynetworknosupporttor"
 - msigna:
     title: "mSIGNA"
     titleshort: "mSIGNA"
@@ -140,7 +185,7 @@ wallets:
       mobile:
         text: "walletbitcoinwallet"
         link: "https://play.google.com/store/apps/details?id=de.schildbach.wallet"
-        source: "https://github.com/schildbach/bitcoin-wallet"
+        source: "https://github.com/bitcoin-wallet/bitcoin-wallet"
         screenshot: "bitcoinwalletandroid.png"
         os:
         - android
@@ -158,7 +203,7 @@ wallets:
       android:
         text: "walletbitcoinwallet"
         link: "https://play.google.com/store/apps/details?id=de.schildbach.wallet"
-        source: "https://github.com/schildbach/bitcoin-wallet"
+        source: "https://github.com/bitcoin-wallet/bitcoin-wallet"
         screenshot: "bitcoinwalletandroid.png"
         os:
         - android
@@ -176,7 +221,7 @@ wallets:
       blackberry:
         text: "walletbitcoinwallet"
         link: "http://appworld.blackberry.com/webstore/content/23952882/"
-        source: "https://github.com/schildbach/bitcoin-wallet"
+        source: "https://github.com/bitcoin-wallet/bitcoin-wallet"
         screenshot: "bitcoinwalletandroid.png"
         os:
         - android
@@ -253,7 +298,7 @@ wallets:
         - ios
         check:
           control: "checkpasscontrolhybrid"
-          validation: "checkfailvalidationcentralized"
+          validation: "checkpassvalidationservers"
           transparency: "checkpasstransparencyopensource"
           environment: "checkpassenvironmentmobile"
           privacy: "checkpassprivacybasic"
@@ -270,7 +315,7 @@ wallets:
         - android
         check:
           control: "checkpasscontrolhybrid"
-          validation: "checkfailvalidationcentralized"
+          validation: "checkpassvalidationservers"
           transparency: "checkpasstransparencyopensource"
           environment: "checkpassenvironmentmobile"
           privacy: "checkpassprivacybasic"
@@ -287,7 +332,7 @@ wallets:
         - ios
         check:
           control: "checkpasscontrolhybrid"
-          validation: "checkfailvalidationcentralized"
+          validation: "checkpassvalidationservers"
           transparency: "checkpasstransparencyopensource"
           environment: "checkpassenvironmentmobile"
           privacy: "checkpassprivacybasic"
@@ -298,7 +343,7 @@ wallets:
 - breadwallet:
     title: "breadwallet"
     titleshort: "breadwallet"
-    compat: "mobile ios"
+    compat: "mobile android ios"
     level: 2
     platform:
       mobile:
@@ -308,6 +353,7 @@ wallets:
         screenshot: "breadwallet.png"
         os:
         - ios
+        - android
         check:
           control: "checkgoodcontrolfull"
           validation: "checkpassvalidationspvp2p"
@@ -325,6 +371,23 @@ wallets:
         screenshot: "breadwallet.png"
         os:
         - ios
+        check:
+          control: "checkgoodcontrolfull"
+          validation: "checkpassvalidationspvp2p"
+          transparency: "checkpasstransparencyopensource"
+          environment: "checkpassenvironmentmobile"
+          privacy: "checkpassprivacybasic"
+        privacycheck:
+          privacyaddressreuse: "checkpassprivacyaddressrotation"
+          privacydisclosure: "checkfailprivacydisclosurespv"
+          privacynetwork: "checkfailprivacynetworknosupporttor"
+      android:
+        text: "walletbreadwallet"
+        link: "https://play.google.com/store/apps/details?id=com.breadwallet"
+        source: "https://github.com/breadwallet/breadwallet-android"
+        screenshot: "breadwallet.png"
+        os:
+        - android
         check:
           control: "checkgoodcontrolfull"
           validation: "checkpassvalidationspvp2p"
@@ -343,7 +406,7 @@ wallets:
     platform:
       hardware:
         text: "wallettrezor"
-        link: "https://www.bitcointrezor.com/"
+        link: "https://trezor.io/"
         source: "https://github.com/trezor/"
         screenshot: "trezor.png"
         check:
@@ -363,6 +426,40 @@ wallets:
         link: "https://www.ledgerwallet.com/"
         source: "https://github.com/LedgerHQ/"
         screenshot: "ledger.png"
+        check:
+          control: "checkgoodcontrolfull"
+          validation: "checkneutralvalidationvariable"
+          transparency: "checkfailtransparencynew"
+          environment: "checkgoodenvironmenthardware"
+          privacy: "checkneutralprivacyvariable"
+- ledgernanos:
+    title: "Ledger Nano S"
+    titleshort: "Ledger<br>Nano S"
+    compat: "hardware"
+    level: 2
+    platform:
+      hardware:
+        text: "walletnanos"
+        link: "https://www.ledgerwallet.com/"
+        source: "https://github.com/LedgerHQ/"
+        screenshot: "ledgernanos.png"
+        check:
+          control: "checkgoodcontrolfull"
+          validation: "checkneutralvalidationvariable"
+          transparency: "checkfailtransparencynew"
+          environment: "checkgoodenvironmenthardware"
+          privacy: "checkneutralprivacyvariable"
+- digitalbitbox:
+    title: "DigitalBitbox"
+    titleshort: "Digital<br />Bitbox"
+    compat: "hardware"
+    level: 2
+    platform:
+      hardware:
+        text: "walletdbb"
+        link: "https://digitalbitbox.com/"
+        source: "https://github.com/digitalbitbox/"
+        screenshot: "digitalbitbox.png"
         check:
           control: "checkgoodcontrolfull"
           validation: "checkneutralvalidationvariable"
@@ -467,7 +564,7 @@ wallets:
         privacycheck:
           privacyaddressreuse: "checkpassprivacyaddressrotation"
           privacydisclosure: "checkfailprivacydisclosureaccount"
-          privacynetwork: "checkfailprivacynetworknosupporttor"
+          privacynetwork: "checkpassprivacynetworksupporttorproxy"
 - mycelium:
     title: "Mycelium"
     titleshort: "Mycelium"
@@ -666,16 +763,108 @@ wallets:
           privacyaddressreuse: "checkpassprivacyaddressrotation"
           privacydisclosure: "checkfailprivacydisclosurecentralized"
           privacynetwork: "checkfailprivacynetworknosupporttor"
-- coinkite:
-    title: "Coinkite"
-    titleshort: "Coinkite"
+- coinspace:
+    title: "Coin.Space"
+    titleshort: "Coin.Space"
+    compat: "mobile web android windowsphone"
+    level: 3
+    platform:
+      mobile:
+        text: "walletcoinspace"
+        link: "https://play.google.com/store/apps/details?id=com.coinspace.app"
+        source: "https://github.com/CoinSpace/CoinSpace"
+        screenshot: "coinspacemobile.png"
+        os:
+        - android
+        - ios
+        - windowsphone
+        check:
+          control: "checkgoodcontrolfull"
+          validation: "checkfailvalidationcentralized"
+          transparency: "checkfailtransparencynew"
+          environment: "checkpassenvironmentmobile"
+          privacy: "checkpassprivacybasic"
+        privacycheck:
+          privacyaddressreuse: "checkpassprivacyaddressrotation"
+          privacydisclosure: "checkfailprivacydisclosureaccount"
+          privacynetwork: "checkfailprivacynetworknosupporttor"
+      android:
+        text: "walletcoinspace"
+        link: "https://play.google.com/store/apps/details?id=com.coinspace.app"
+        source: "https://github.com/CoinSpace/CoinSpace"
+        screenshot: "coinspacemobile.png"
+        os:
+        - android
+        check:
+          control: "checkgoodcontrolfull"
+          validation: "checkfailvalidationcentralized"
+          transparency: "checkfailtransparencynew"
+          environment: "checkpassenvironmentmobile"
+          privacy: "checkpassprivacybasic"
+        privacycheck:
+          privacyaddressreuse: "checkpassprivacyaddressrotation"
+          privacydisclosure: "checkfailprivacydisclosureaccount"
+          privacynetwork: "checkfailprivacynetworknosupporttor"
+      ios:
+        text: "walletcoinspace"
+        link: "https://itunes.apple.com/us/app/coinspace-bitcoin-wallet/id980719434?mt=8"
+        source: "https://github.com/CoinSpace/CoinSpace"
+        screenshot: "coinspacemobile.png"
+        os:
+        - ios
+        check:
+          control: "checkgoodcontrolfull"
+          validation: "checkfailvalidationcentralized"
+          transparency: "checkfailtransparencynew"
+          environment: "checkpassenvironmentmobile"
+          privacy: "checkpassprivacybasic"
+        privacycheck:
+          privacyaddressreuse: "checkpassprivacyaddressrotation"
+          privacydisclosure: "checkfailprivacydisclosureaccount"
+          privacynetwork: "checkfailprivacynetworknosupporttor"
+      windowsphone:
+        text: "walletcoinspace"
+        link: "https://www.microsoft.com/en-us/store/apps/coin-space-digital-currency-wallet/9nblgggz58z9"
+        source: "https://github.com/CoinSpace/CoinSpace"
+        screenshot: "coinspacemobile.png"
+        os:
+        - windowsphone
+        check:
+          control: "checkgoodcontrolfull"
+          validation: "checkfailvalidationcentralized"
+          transparency: "checkfailtransparencynew"
+          environment: "checkpassenvironmentmobile"
+          privacy: "checkpassprivacybasic"
+        privacycheck:
+          privacyaddressreuse: "checkpassprivacyaddressrotation"
+          privacydisclosure: "checkfailprivacydisclosureaccount"
+          privacynetwork: "checkfailprivacynetworknosupporttor"
+      web:
+        text: "walletcoinspace"
+        link: "https://coin.space"
+        source: "https://github.com/CoinSpace/CoinSpace"
+        screenshot: "coinspaceweb.png"
+        os:
+        check:
+          control: "checkgoodcontrolfull"
+          validation: "checkfailvalidationcentralized"
+          transparency: "checkfailtransparencyremote"
+          environment: "checkfailenvironmentdesktop"
+          privacy: "checkpassprivacybasic"
+        privacycheck:
+          privacyaddressreuse: "checkpassprivacyaddressrotation"
+          privacydisclosure: "checkfailprivacydisclosureaccount"
+          privacynetwork: "checkpassprivacynetworksupporttorproxy"
+- coinbase:
+    title: "Coinbase"
+    titleshort: "Coinbase"
     compat: "web"
     level: 4
     platform:
       web:
-        text: "walletcoinkite"
-        link: "https://coinkite.com"
-        screenshot: "coinkite.png"
+        text: "walletcoinbase"
+        link: "https://coinbase.com"
+        screenshot: "coinbase.png"
         os:
         check:
           control: "checkfailcontrolthirdparty"
@@ -729,28 +918,6 @@ wallets:
           privacyaddressreuse: "checkpassprivacyaddressrotation"
           privacydisclosure: "checkfailprivacydisclosureaccount"
           privacynetwork: "checkpassprivacynetworksupporttorproxy"
-
-- circle:
-    title: "Circle"
-    titleshort: "Circle"
-    compat: "web"
-    level: 4
-    platform:
-      web:
-        text: "walletcircle"
-        link: "https://circle.com/"
-        screenshot: "circle.png"
-        os:
-        check:
-          control: "checkfailcontrolthirdpartyinsured"
-          validation: "checkfailvalidationcentralized"
-          transparency: "checkfailtransparencyremote"
-          environment: "checkpassenvironmenttwofactor"
-          privacy: "checkpassprivacybasic"
-        privacycheck:
-          privacyaddressreuse: "checkpassprivacyaddressrotation"
-          privacydisclosure: "checkfailprivacydisclosureaccount"
-          privacynetwork: "checkpassprivacynetworksupporttorproxy"
 - keepkey:
     title: "KeepKey"
     titleshort: "KeepKey"
@@ -768,6 +935,46 @@ wallets:
           transparency: "checkfailtransparencynew"
           environment: "checkgoodenvironmenthardware"
           privacy: "checkneutralprivacyvariable"
+- simplebitcoinwallet:
+    title: "Simple Bitcoin Wallet"
+    titleshort: "Simple<br>Bitcoin"
+    compat: "mobile android"
+    level: 2
+    platform:
+      mobile:
+        text: "walletsimplebitcoinwallet"
+        link: "https://play.google.com/store/apps/details?id=com.btcontract.wallet"
+        source: "https://github.com/btcontract/wallet"
+        screenshot: "simplebitcoinwalletandroid.png"
+        os:
+        - android
+        check:
+          control: "checkgoodcontrolfull"
+          validation: "checkpassvalidationspvp2p"
+          transparency: "checkpasstransparencyopensource"
+          environment: "checkpassenvironmentmobile"
+          privacy: "checkpassprivacybasic"
+        privacycheck:
+          privacyaddressreuse: "checkpassprivacyaddressrotation"
+          privacydisclosure: "checkfailprivacydisclosurespv"
+          privacynetwork: "checkfailprivacynetworknosupporttor"
+      android:
+        text: "walletsimplebitcoinwallet"
+        link: "https://play.google.com/store/apps/details?id=com.btcontract.wallet"
+        source: "https://github.com/btcontract/wallet"
+        screenshot: "simplebitcoinwalletandroid.png"
+        os:
+        - android
+        check:
+          control: "checkgoodcontrolfull"
+          validation: "checkpassvalidationspvp2p"
+          transparency: "checkpasstransparencyopensource"
+          environment: "checkpassenvironmentmobile"
+          privacy: "checkpassprivacybasic"
+        privacycheck:
+          privacyaddressreuse: "checkpassprivacyaddressrotation"
+          privacydisclosure: "checkfailprivacydisclosurespv"
+          privacynetwork: "checkfailprivacynetworknosupporttor"
 ---
 
 <!-- Note: this file exempt from check-for-subheading-anchors check -->

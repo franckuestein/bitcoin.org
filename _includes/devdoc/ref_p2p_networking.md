@@ -64,11 +64,13 @@ with the most recent versions listed first. (If you know of a protocol
 version that implemented a major change but which is not listed here,
 please [open an issue][docs issue].)
 
-As of Bitcoin Core 0.11.0, the most recent protocol version is 70002.
+As of Bitcoin Core 0.13.0, the most recent protocol version is 70014.
 
 | Version | Initial Release                    | Major Changes
 |---------|------------------------------------|--------------
-| 70012   | Bitcoin Core 0.12.0 <br>(Not released yet)  | [BIP130][]: <br>• Added `sendheaders` message
+| 70014   | Bitcoin Core 0.13.0 <br>  | [BIP152][]: <br>• Added `sendcmpct`, `cmpctblock`, `getblocktxn`, `blocktxn` messages <br> * Added `MSG_CMPCT_BLOCK` inventory type to `getdata` message.
+| 70013   | Bitcoin Core 0.13.0 <br>  | [BIP133][]: <br>• Added `feefilter` message
+| 70012   | Bitcoin Core 0.12.0 <br>  | [BIP130][]: <br>• Added `sendheaders` message
 | 70002   | Bitcoin Core 0.9.0 <br>(Mar 2014)  | • Send multiple `inv` messages in response to a `mempool` message if necessary <br><br>[BIP61][]: <br>• Added `reject` message
 | 70001   | Bitcoin Core 0.8.0 <br>(Feb 2013)  | • Added `notfound` message. <br><br>[BIP37][]: <br>• Added `filterload` message. <br>• Added `filteradd` message. <br>• Added `filterclear` message. <br>• Added `merkleblock` message. <br>• Added relay field to `version` message <br>• Added `MSG_FILTERED_BLOCK` inventory type to `getdata` message.
 | 60002   | Bitcoin Core 0.7.0 <br>(Sep 2012)  | [BIP35][]: <br>• Added `mempool` message. <br>• Extended `getdata` message to allow download of memory pool transactions
@@ -407,7 +409,7 @@ proof of work.
 | 80       | block header       | block_header     | The block header in the format described in the [block header section][section block header].
 | 4        | transaction count  | uint32_t         | The number of transactions in the block (including ones that don't match the filter).
 | *Varies* | hash count         | compactSize uint | The number of hashes in the following field.
-| *Varies* | hashes             | char[32]         | One or more hashes of both transactions and merkle nodes in internal byte order.  Each hash is 32 bits.
+| *Varies* | hashes             | char[32]         | One or more hashes of both transactions and merkle nodes in internal byte order.  Each hash is 32 bytes.
 | *Varies* | flag byte count    | compactSize uint | The number of flag bytes in the following field.
 | *Varies* | flags              | byte[]           | A sequence of bits packed eight in a byte with the least significant bit first.  May be padded to the nearest byte boundary but must not contain any more bits than that.  Used to assign the hashes to particular nodes in the merkle tree as described below.
 
@@ -868,7 +870,7 @@ provide plausible-deniability privacy.
 
 | Bytes    | Name         | Data Type | Description
 |----------|--------------|-----------|---------------
-| *Varies* | nFilterBytes | uint8_t[] | Number of bytes in the following filter bit field.
+| *Varies* | nFilterBytes | compactSize uint | Number of bytes in the following filter bit field.
 | *Varies* | filter       | uint8_t[] | A bit field of arbitrary byte-aligned size. The maximum size is 36,000 bytes.
 | 4        | nHashFuncs   | uint32_t  | The number of hash functions to use in this filter. The maximum value allowed in this field is 50.
 | 4        | nTweak       | uint32_t  | An arbitrary value to add to the seed value in the hash function used by the bloom filter.
